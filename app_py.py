@@ -11,22 +11,62 @@ import streamlit as st
 import numpy as np
 import pickle
 
+# Page config
+st.set_page_config(
+    page_title="Customer Lifetime Value Predictor",
+    layout="wide"
+)
+
 # Load model
-model = pickle.load(open("clv_model (1).pkl", "rb"))
+model = pickle.load(open("clv_model.pkl", "rb"))
 
+# Custom dark style
+st.markdown("""
+<style>
+.main {
+    background-color: #0e1117;
+    color: white;
+}
+.block-container {
+    padding-top: 2rem;
+}
+.big-font {
+    font-size:30px !important;
+    font-weight: bold;
+}
+.result-box {
+    background-color: #0e5f3c;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+</style>
+""", unsafe_allow_html=True)
 
-st.title("Customer Lifetime Value Prediction")
+# Title
+st.markdown('<p class="big-font">Customer Lifetime Value Prediction</p>', unsafe_allow_html=True)
+st.write("Predict CLV using customer behavior features.")
+st.markdown("---")
+col1, col2 = st.columns(2)
 
-st.write("Enter customer details to predict CLV")
+with col1:
+    recency = st.number_input("Recency", min_value=0.0)
+    monetary = st.number_input("Monetary", min_value=0.0)
+    customer_lifespan = st.number_input("Customer Lifespan", min_value=0.0)
 
-income = st.number_input("Income")
-age = st.number_input("Age")
-purchase_count = st.number_input("Purchase Count")
-avg_order_value = st.number_input("Avg Order Value")
-customer_lifespan = st.number_input("Customer Lifespan")
-active_months = st.number_input("Active Months")
+with col2:
+    frequency = st.number_input("Frequency", min_value=0.0)
+    avg_order_value = st.number_input("Avg Order Value", min_value=0.0)
+    active_months = st.number_input("Active Months", min_value=0.0)
+    st.markdown("---")
 
-if st.button("Predict"):
-    data = np.array([[income, age, purchase_count, avg_order_value, customer_lifespan, active_months]])
+if st.button("Predict CLV"):
+    data = np.array([[recency, frequency, monetary,
+                      avg_order_value, customer_lifespan, active_months]])
+    
     prediction = model.predict(data)
-    st.success(f"Predicted CLV: {prediction[0]:.2f}")
+
+    st.markdown(
+        f'<div class="result-box">Predicted CLV: ₹ {prediction[0]:,.2f}</div>',
+        unsafe_allow_html=True
+    )
