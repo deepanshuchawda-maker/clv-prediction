@@ -27,6 +27,6 @@ customer_lifespan = st.number_input("Customer Lifespan")
 active_months = st.number_input("Active Months")
 
 if st.button("Predict"):
-    data = np.array([[income, age, purchase_count, tenure]])
+    data = np.array([[income, age, purchase_count, avg_order_value, customer_lifespan, active_months]])
     prediction = model.predict(data)
     st.success(f"Predicted CLV: {prediction[0]:.2f}")
