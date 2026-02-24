@@ -25,6 +25,6 @@ purchase_count = st.number_input("Purchase Count")
 tenure = st.number_input("Tenure")
 
 if st.button("Predict"):
-    data = np.array([[recency, frequency, monetary, tenure]])
+    data = np.array([[income, age, purchase_count, tenure]])
     prediction = model.predict(data)
     st.success(f"Predicted CLV: {prediction[0]:.2f}")
