@@ -12,7 +12,7 @@ import numpy as np
 import pickle
 
 # Load model
-model = pickle.load(open("clv_model(1)", "rb"))
+model = pickle.load(open("clv_model (1)", "rb"))
 
 
 st.title("Customer Lifetime Value Prediction")
