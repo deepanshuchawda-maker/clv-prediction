@@ -50,8 +50,8 @@ st.markdown("---")
 col1, col2 = st.columns(2)
 
 with col1:
-    recency = st.number_input("Recency", min_value=0.0)
-    monetary = st.number_input("Monetary", min_value=0.0)
+    recency = st.number_input("Income", min_value=0.0)
+    monetary = st.number_input("age", min_value=0.0)
     customer_lifespan = st.number_input("Customer Lifespan", min_value=0.0)
 
 with col2:
