@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 # Load model
-model = pickle.load(open("clv_model.pkl", "rb"))
+model = pickle.load(open("clv_model (1).pkl", "rb"))
 
 # Custom dark style
 st.markdown("""
