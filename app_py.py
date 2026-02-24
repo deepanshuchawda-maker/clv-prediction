@@ -19,9 +19,9 @@ st.title("Customer Lifetime Value Prediction")
 
 st.write("Enter customer details to predict CLV")
 
-recency = st.number_input("Recency")
-frequency = st.number_input("Frequency")
-monetary = st.number_input("Monetary")
+income = st.number_input("Income")
+age = st.number_input("Age")
+purchase_count = st.number_input("Purchase Count")
 tenure = st.number_input("Tenure")
 
 if st.button("Predict"):
