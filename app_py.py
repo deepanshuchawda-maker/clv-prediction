@@ -22,6 +22,9 @@ st.write("Enter customer details to predict CLV")
 income = st.number_input("Income")
 age = st.number_input("Age")
 purchase_count = st.number_input("Purchase Count")
+avg_order_value = st.number_input("Avg Order Value")
+customer_lifespan = st.number_input("Customer Lifespan")
+active_months = st.number_input("Active Months")
 
 if st.button("Predict"):
     data = np.array([[income, age, purchase_count, tenure]])
